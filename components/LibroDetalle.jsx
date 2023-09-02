@@ -1,13 +1,13 @@
 import libraryService from "../services/libraryService";
 import { useParams } from "next/navigation";
-const BookDetail = () => {
+const LibroDetalle = () => {
   const next = useParams();
   const { id } = next;
   const [book, setBook] = useState(null);
 
   useEffect(() => {
     const fetchBook = async () => {
-      const response = await libraryService.getBook(id);
+      const response = await libraryService.getLibroById(id);
       setBook(response.data);
     };
     fetchBook();
@@ -28,4 +28,4 @@ const BookDetail = () => {
   );
 };
 
-export default BookDetail;
+export default LibroDetalle;

@@ -1,31 +1,27 @@
 import axios from "axios";
-//api https://www.dbooks.org/api/
-const API_URL = "https://www.dbooks.org/api";
+
+const API_URL = "http://192.168.1.79:3005/api";
 
 const libraryService = {
-  getBooks: async () => {
-    const response = await axios.get(`${API_URL}/books`);
-    return response.data;
-  },
-  getRecentBooks: async () => {
-    const response = await axios.get(`${API_URL}/recent`);
+  getLibros: async () => {
+    const response = await axios.get(`${API_URL}/libros`);
     return response.data;
   },
 
-  getBookById: async (id) => {
-    const response = await axios.get(`${API_URL}/books/${id}`);
+  getLibroById: async (id) => {
+    const response = await axios.get(`${API_URL}/libros/${id}`);
     return response.data;
   },
-  createBook: async (book) => {
-    const response = await axios.post(`${API_URL}/books`, book);
+  createLibro: async (book) => {
+    const response = await axios.post(`${API_URL}/libros`, book);
     return response.data;
   },
-  updateBook: async (id, book) => {
-    const response = await axios.put(`${API_URL}/books/${id}`, book);
+  updateLibro: async (id, book) => {
+    const response = await axios.put(`${API_URL}/libros/${id}`, book);
     return response.data;
   },
-  deleteBook: async (id) => {
-    const response = await axios.delete(`${API_URL}/books/${id}`);
+  deleteLibro: async (id) => {
+    const response = await axios.delete(`${API_URL}/libros/${id}`);
     return response.data;
   },
 };

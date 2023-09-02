@@ -1,30 +1,26 @@
 "use client";
-import BookDetail from "@/components/BookDetail";
-import BookList from "@/components/BookList";
+
+import ListaLibros from "@/components/ListaLibros";
 import libraryService from "@/services/libraryService";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [books, setBooks] = useState([]);
-  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await libraryService.getRecentBooks();
+      const response = await libraryService.getLibros();
       setBooks(response);
     };
     fetchBooks();
   }, []);
 
-  const handleBookSelect = (book) => {
-    setSelectedBook(book);
-  };
-
   return (
-    <div className="App">
-      <h1>My Library</h1>
-      <BookList books={books} onBookSelect={handleBookSelect} />
-      {selectedBook && <BookDetail book={selectedBook} />}
+    <div className="bg-gray-100 min-h-screen">
+      <div className="flex justify-center items-center ">
+        <h1 className="text-3xl font-bold text-center mb-8">Mi libreria</h1>
+      </div>
+      <ListaLibros books={books} />
     </div>
   );
 }
